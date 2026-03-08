@@ -16,12 +16,23 @@
      * 1. Mostrar los alumnos aprobados: david y pedro
      * 2. Calcular la nota media de todos los alumnos
      */
-
     const alumnos = [
                     {"nombre":"david","nota":7},
                     {"nombre": "alberto","nota":3},
                     {"nombre": "pedro","nota":9},
                     {"nombre": "jaime","nota":2}
                     ]
+    const aprobados = alumnos.filter(e => e["nota"] > 5);
+    console.log("Alumnos aprobados")
+    for (let alumno of aprobados)
+        console.log(`- ${alumno["nombre"]}`)
+
+    var suma = 0
+    alumnos.forEach(value => {
+        suma += value["nota"];
+    });
+    const notaMedia = suma / alumnos.length;
+    console.log("Nota media: "+notaMedia)
+
 </script>
 </html>
