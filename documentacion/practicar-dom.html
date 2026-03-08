@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicar DOM</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 30px; }
+        .rojo { color: red; }
+        .azul { color: blue; }
+        .grande { font-size: 24px; }
+        .resaltado { background: yellow; padding: 2px 6px; }
+        .oculto { display: none; }
+        #caja { border: 2px dashed #999; padding: 10px; margin: 10px 0; }
+        button { margin: 5px; padding: 8px 14px; cursor: pointer; }
+        .resultado { background: #e0e0e0; padding: 10px; margin: 5px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- ================================== -->
+    <!-- 1. SELECCIÓN                       -->
+    <!-- ================================== -->
+    <h2>1. Métodos de Selección</h2>
+
+    <h1 id="titulo">Bienvenido al DOM</h1>
+    <p class="rojo">Párrafo rojo 1</p>
+    <p class="rojo">Párrafo rojo 2</p>
+    <p class="azul">Párrafo azul</p>
+
+    <div id="caja">
+        <p class="rojo">Párrafo rojo dentro del div</p>
+        <a href="#">Un enlace</a>
+    </div>
+
+    <button onclick="probarSeleccion()">🔍 Probar selección</button>
+    <div id="resultadoSeleccion" class="resultado"></div>
+
+    <!-- ================================== -->
+    <!-- 2. MODIFICAR CONTENIDO             -->
+    <!-- ================================== -->
+    <h2>2. Modificar Contenido</h2>
+
+    <p id="textoDemo">Este es el texto original.</p>
+    <button onclick="cambiarTexto()">✏️ Cambiar con textContent</button>
+    <button onclick="cambiarHTML()">🔧 Cambiar con innerHTML</button>
+    <button onclick="restaurarTexto()">↩️ Restaurar</button>
+
+    <!-- ================================== -->
+    <!-- 3. ATRIBUTOS                       -->
+    <!-- ================================== -->
+    <h2>3. Modificar Atributos</h2>
+
+    <a id="miEnlace" href="https://google.com" target="_blank">Enlace a Google</a><br><br>
+    <button onclick="cambiarAtributo()">🔗 Cambiar href a YouTube</button>
+    <button onclick="leerAtributo()">👁️ Leer href actual</button>
+    <button onclick="quitarAtributo()">🗑️ Quitar target</button>
+
+    <!-- ================================== -->
+    <!-- 4. CLASES (classList)              -->
+    <!-- ================================== -->
+    <h2>4. Modificar Clases</h2>
+
+    <p id="parrafoClases">Texto para probar clases</p>
+    <button onclick="agregarClase()">➕ Añadir .rojo</button>
+    <button onclick="quitarClase()">➖ Quitar .rojo</button>
+    <button onclick="toggleClase()">🔄 Toggle .resaltado</button>
+    <button onclick="toggleGrande()">🔄 Toggle .grande</button>
+
+    <!-- ================================== -->
+    <!-- 5. CREAR Y ELIMINAR ELEMENTOS      -->
+    <!-- ================================== -->
+    <h2>5. Crear, Añadir y Eliminar</h2>
+
+    <div id="contenedor">
+        <p>Elemento original 1</p>
+        <p>Elemento original 2</p>
+    </div>
+    <button onclick="crearElemento()">➕ Crear nuevo párrafo</button>
+    <button onclick="eliminarUltimo()">🗑️ Eliminar último</button>
+
+    <!-- ================================== -->
+    <!-- 6. NAVEGAR POR EL ÁRBOL            -->
+    <!-- ================================== -->
+    <h2>6. Navegar por el Árbol DOM</h2>
+
+    <div id="familia">
+        <p>Hijo 1</p>
+        <p>Hijo 2</p>
+        <p>Hijo 3</p>
+    </div>
+    <button onclick="navegarArbol()">🌳 Navegar árbol</button>
+    <div id="resultadoNavegar" class="resultado"></div>
+
+
+    <!-- ================================== -->
+    <!-- SCRIPT                             -->
+    <!-- ================================== -->
+    <script>
+
+        // =====================
+        // 1. SELECCIÓN
+        // =====================
+        function probarSeleccion() {
+            const res = document.querySelector('#resultadoSeleccion');
+            let html = '';
+
+            // getElementById
+            const titulo = document.getElementById('titulo');
+            html += `<b>getElementById('titulo'):</b> ${titulo.textContent}<br>`;
+
+            // getElementsByClassName
+            const rojos = document.getElementsByClassName('rojo');
+            html += `<b>getElementsByClassName('rojo'):</b> ${rojos.length} elementos<br>`;
+
+            // querySelector (primero)
+            const primero = document.querySelector('.rojo');
+            html += `<b>querySelector('.rojo'):</b> ${primero.textContent}<br>`;
+
+            // querySelectorAll (todos)
+            const todos = document.querySelectorAll('.rojo');
+            html += `<b>querySelectorAll('.rojo'):</b> ${todos.length} elementos<br>`;
+
+            // Selector compuesto
+            const dentroDiv = document.querySelector('#caja .rojo');
+            html += `<b>querySelector('#caja .rojo'):</b> ${dentroDiv.textContent}<br>`;
+
+            res.innerHTML = html;
+        }
+
+        // =====================
+        // 2. MODIFICAR CONTENIDO
+        // =====================
+        const textoOriginal = 'Este es el texto original.';
+
+        function cambiarTexto() {
+            const p = document.querySelector('#textoDemo');
+            p.textContent = '✅ Texto cambiado con textContent (no interpreta HTML)';
+        }
+
+        function cambiarHTML() {
+            const p = document.querySelector('#textoDemo');
+            p.innerHTML = '✅ <strong>Texto</strong> cambiado con <em>innerHTML</em> (sí interpreta HTML)';
+        }
+
+        function restaurarTexto() {
+            document.querySelector('#textoDemo').textContent = textoOriginal;
+        }
+
+        // =====================
+        // 3. ATRIBUTOS
+        // =====================
+        function cambiarAtributo() {
+            const enlace = document.querySelector('#miEnlace');
+            enlace.setAttribute('href', 'https://youtube.com');
+            enlace.textContent = 'Enlace a YouTube';
+        }
+
+        function leerAtributo() {
+            const enlace = document.querySelector('#miEnlace');
+            alert('href actual: ' + enlace.getAttribute('href'));
+        }
+
+        function quitarAtributo() {
+            const enlace = document.querySelector('#miEnlace');
+            enlace.removeAttribute('target');
+            alert('target eliminado — ahora abre en la misma pestaña');
+        }
+
+        // =====================
+        // 4. CLASES
+        // =====================
+        function agregarClase() {
+            document.querySelector('#parrafoClases').classList.add('rojo');
+        }
+
+        function quitarClase() {
+            document.querySelector('#parrafoClases').classList.remove('rojo');
+        }
+
+        function toggleClase() {
+            document.querySelector('#parrafoClases').classList.toggle('resaltado');
+        }
+
+        function toggleGrande() {
+            document.querySelector('#parrafoClases').classList.toggle('grande');
+        }
+
+        // =====================
+        // 5. CREAR Y ELIMINAR
+        // =====================
+        let contador = 0;
+
+        function crearElemento() {
+            contador++;
+            const nuevo = document.createElement('p');
+            nuevo.textContent = `🆕 Párrafo creado #${contador}`;
+            nuevo.style.color = 'green';
+            document.querySelector('#contenedor').appendChild(nuevo);
+        }
+
+        function eliminarUltimo() {
+            const contenedor = document.querySelector('#contenedor');
+            if (contenedor.lastElementChild) {
+                contenedor.lastElementChild.remove();
+            }
+        }
+
+        // =====================
+        // 6. NAVEGAR ÁRBOL
+        // =====================
+        function navegarArbol() {
+            const familia = document.querySelector('#familia');
+            const res = document.querySelector('#resultadoNavegar');
+            let html = '';
+
+            html += `<b>parentElement:</b> ${familia.parentElement.tagName}<br>`;
+            html += `<b>children.length:</b> ${familia.children.length}<br>`;
+            html += `<b>firstElementChild:</b> ${familia.firstElementChild.textContent}<br>`;
+            html += `<b>lastElementChild:</b> ${familia.lastElementChild.textContent}<br>`;
+
+            const segundo = familia.children[1];
+            html += `<b>children[1].nextElementSibling:</b> ${segundo.nextElementSibling.textContent}<br>`;
+            html += `<b>children[1].previousElementSibling:</b> ${segundo.previousElementSibling.textContent}<br>`;
+
+            res.innerHTML = html;
+        }
+
+    </script>
+
+</body>
+</html>

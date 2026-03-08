@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar y añadir datos</title>
+</head>
+<body>
+    <label for="nombre">Nombre   <input type="text" name="nombre" id="nombre"></label><br>
+    <label for="apellidos">Apellido<input type="text" name="apellidos" id="apellidos"></label><br>
+    <label for="email">Email   <input type="text" name="email" id="email"></label><br>
+    <label for="edad">Edad   <input type="text" name="edad"></label><br><br>
+    Relación laboral <br>
+    <label for="nombre"><input type="radio" name="empleo" id="empleado" value="empleado">Empleado</label>
+    <label for="nombre"><input type="radio" name="empleo" id="desempleado" value="desempleado">Desempleado</label>
+    <label for="nombre"><input type="radio" name="empleo" id="estudiante" value="estudiante">Estudiante</label>
+    <label for="nombre"><input type="radio" name="empleo" id="jubilado" value="jubilado">Jubilado</label><br><br>
+    Intereses <br>
+    <label for="nombre"><input type="checkbox" name="cine" id="cine" value="cine">Cine</label>
+    <label for="nombre"><input type="checkbox" name="deporte" id="deporte">Deporte</label>
+    <label for="nombre"><input type="checkbox" name="musica" id="musica">Música</label>
+    <label for="nombre"><input type="checkbox" name="videojuego" id="videojuego">Videojuegos</label><br><br>
+    <input type="submit" value="Añadir sujeto" id="boton">
+
+    <ul>
+    <li>David Mateos con email david@email.com de 35 años es empleado y le gusta la música, cine</li>
+    <li>Voldemort con email nagini@email.com de 95 años es jubilado y no tiene aficiones :/</li>
+    </ul>
+    <br><br>
+    VALIDACIONES <br>
+        0. Si no supera todas las validaciones no debe añadir el texto <br>
+        1. Los campons Nombre, apellidos, email, edad, relación laboral deben tener información <br>
+        2. Edad tiene que estar comprendida entre 16 y 99 años <br>
+        3. email debe contener @ y . para considerarse email valido <br>
+        4. Si no tiene aficiones debe mostrar "y no tiene aficiones :/ " <br>
+        5. Se debe mostrar en formato ALERT el tipo de error que se encuente <br>
+            <strong>5.1 Faltan campos por rellenar <br></strong>
+            <strong>5.2 Tiene edad no comprendida entre 16-99 <br></strong>
+            <strong>5.3 El email no tiene el formato adecuado <br></strong>
+            <strong>5.4 No esta marcada la relación laboral <br></strong>
+
+</body>
+</html>
