@@ -81,7 +81,7 @@ todos.forEach(el => console.log(el.textContent));
 //  └─────────────────────────┴────────────────────────────────────────┘
 
 const div = document.querySelector('#caja');
-console.log(div.parentElement);        // Padre
+console.log(div.parentElement);       // Padre
 console.log(div.children);            // Hijos directos / HTMLCollection
 console.log(div.firstElementChild);   // = div.children[0]
 console.log(div.nextElementSibling);  // Hermano siguiente
@@ -128,14 +128,23 @@ const nuevoDiv = document.createElement('div');
 nuevoDiv.textContent = 'Soy nuevo';
 document.body.appendChild(nuevoDiv);   // Añade al final del body
 
-// --- 2.5 Insertar en posición específica ---
+// --- 2.5 Insertar en posición específica --
+//  ┌──────────────────────┬────────────────────────────────────────────────┐
+//  │ Método               │ Qué hace                                       │
+//  ├──────────────────────┼────────────────────────────────────────────────┤
+//  │ parent.append(nuevo) │ Inserta como último hijo DENTRO del padre      │
+//  │ parent.prepend(nuevo)│ Inserta como primer hijo DENTRO del padre      │
+//  ├──────────────────────┼────────────────────────────────────────────────┤
+//  │ ref.after(nuevo)     │ Inserta DESPUÉS del elemento (como hermano)    │
+//  │ ref.before(nuevo)    │ Inserta ANTES del elemento (como hermano)      │
+//  └──────────────────────┴────────────────────────────────────────────────┘
 const ref = document.querySelector('#titulo');
-ref.after(nuevoDiv);                   // Después del título
+ref.after(nuevoDiv);                  // Después del título
 // ref.before(nuevoDiv);              // Antes del título
 // parent.insertBefore(nuevo, ref);   // Alternativa clásica
 
 // --- 2.6 Eliminar y reemplazar ---
-nuevoDiv.remove();                     // Se elimina a sí mismo
+nuevoDiv.remove();                    // Se elimina a sí mismo
 // parent.removeChild(hijo);          // Elimina un hijo
 // parent.replaceChild(nuevo, viejo); // Reemplaza un hijo
 

@@ -74,6 +74,7 @@ let firstFruit = fruits.shift();   // Elimina y devuelve el primero
 //  │ Insertar   │ splice(2, 0, 'X')  │ No quita nada, inserta en 2    │
 //  │ Desde fin  │ splice(-1, 1)      │ Elimina el último elemento     │
 //  │ Vaciar     │ splice(0)          │ Elimina todo desde índice 0    │
+//  │ Filtrar    │ filter(lambda)     │ Filtra por condicion           │
 //  └────────────┴────────────────────┴────────────────────────────────┘
 
 // Caso 1: ELIMINAR — borrar 2 elementos desde el índice 1
