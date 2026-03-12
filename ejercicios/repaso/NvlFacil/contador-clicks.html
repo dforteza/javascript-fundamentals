@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="contador">0</p>
+    <input type="button" value="Sumar" id="btnSumar">
+    <input type="button" value="Restar" id="btnRestar">
+    <input type="button" value="Resetear" id="btnReset">
+
+    <script defer>
+    //         Requisitos:
+    // - Sumar incrementa el número en 1
+    // - Restar lo decrementa en 1, pero no puede bajar de 0 → alert "No puede ser negativo"
+    // - Resetear lo vuelve a 0
+    // - El <p> siempre muestra el valor actual
+
+    // 1 DATOS
+    let contador = 0
+
+    // 2 CAPTURAR ELEMENTOS
+    const display  = document.querySelector('#contador')
+    const btnSumar  = document.querySelector('#btnSumar')
+    const btnRestar = document.querySelector('#btnRestar')
+    const btnReset  = document.querySelector('#btnReset')
+
+    // 3 RENDER — su único trabajo es mostrar el dato
+    function render() 
+    {
+        display.textContent = contador
+    }
+
+    // ④ LÓGICA
+    function sumar() 
+    {
+        contador++
+        render()
+    }
+
+    function restar() 
+    {
+        if (contador === 0)
+        {
+            alert('No puede ser negativo')
+            return
+        }
+        contador--
+        render()
+    }
+
+    function resetear() 
+    {
+        contador = 0
+        render()
+    }
+
+    // 5 EVENTOS
+    btnSumar.addEventListener('click', sumar)
+    btnRestar.addEventListener('click', restar)
+    btnReset.addEventListener('click', resetear)
+
+    // Render inicial para que muestre 0 al cargar
+    render()
+
+</script>
+
+</body>
+</html>l

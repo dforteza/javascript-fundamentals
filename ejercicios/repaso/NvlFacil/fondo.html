@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Rojo" id="btnRojo">
+    <input type="button" value="Verde" id="btnVerde">
+    <input type="button" value="Azul" id="btnAzul">
+    <input type="button" value="Resetear" id="btnReset">
+    <p id="mensaje">Color actual: ninguno</p>
+    <!-- ```
+    ```
+    Requisitos:
+    - Cada botón cambia el color de fondo de la página (document.body.style.backgroundColor)
+    - El <p> muestra "Color actual: rojo" (o el que sea)
+    - Resetear vuelve el fondo a blanco y el mensaje a "Color actual: ninguno" -->
+    <script defer>
+        // ① DATOS
+        let colorActual = 'ninguno'
+
+        // ② CAPTURAR
+        const btnRojo  = document.querySelector('#btnRojo')
+        const btnVerde = document.querySelector('#btnVerde')
+        const btnAzul  = document.querySelector('#btnAzul')
+        const btnReset = document.querySelector('#btnReset')
+        const display  = document.querySelector('#mensaje')
+
+        // ③ RENDER
+        function render() {
+        display.textContent = `Color actual: ${colorActual}`
+        }
+
+        // ④ LÓGICA
+        btnRojo.addEventListener('click', () => {
+        document.body.style.backgroundColor = 'red'
+        colorActual = 'rojo'
+        render()
+        })
+
+        btnVerde.addEventListener('click', () => {
+        document.body.style.backgroundColor = 'green'
+        colorActual = 'verde'
+        render()
+        })
+
+        btnAzul.addEventListener('click', () => {
+        document.body.style.backgroundColor = 'lightblue'
+        colorActual = 'azul'
+        render()
+        })
+
+        btnReset.addEventListener('click', () => {
+        document.body.style.backgroundColor = 'white'
+        colorActual = 'ninguno'
+        render()
+        })
+
+        // Render inicial
+        render()
+
+    </script>
+</body>
+</html>

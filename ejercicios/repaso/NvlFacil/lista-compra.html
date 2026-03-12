@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="producto" placeholder="Nombre del producto">
+    <input type="button" value="Añadir" id="btnAdd">
+    <ul id="lista"></ul>
+    <!-- ```
+    ```
+    Requisitos:
+    - Si el campo está vacío → alert "Campo vacío"
+    - Añadir el producto como <li> a la lista
+    - Limpiar el input después de añadir -->
+    <script defer>
+    // 1 DATOS ESTATICOS
+    let productos = []
+
+    // 2 CAPTURAR
+    const inputProducto = document.querySelector('#producto')
+    const lista         = document.querySelector('#lista')
+    const btnAdd        = document.querySelector('#btnAdd')
+
+
+    // 3 RENDER - Visualizacion
+    function render() 
+    {
+        lista.innerHTML = ''
+        for (let p of productos) 
+        {
+            const li = document.createElement('li')
+            li.textContent = p
+            lista.append(li)
+        }
+    }
+
+    // 4 LÓGICA
+    function addItem() 
+    {
+        const texto = inputProducto.value.trim()
+
+        if (texto.length === 0) 
+        {
+            alert('Producto vacío')
+            return
+        }
+
+        productos.push(texto)
+        inputProducto.value = ''
+        render()
+    }
+
+    // ⑤ EVENTOS
+    btnAdd.addEventListener('click', addItem)
+
+    </script>
+</body>
+</html>

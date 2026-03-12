@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Mostrar / Ocultar" id="btnToggle">
+    <p id="texto">Este texto se puede ocultar y mostrar</p>
+
+    <script defer>
+        // 1 DATOS
+        let ocultar = false
+        
+        // 2 CAPTURAR
+        const btn = document.querySelector('#btnToggle')
+        const display = document.querySelector('#texto')
+
+        function render() {
+        if (!ocultar) {
+            display.style.display = 'none'
+            ocultar = true
+        } else {
+            display.style.display = 'block'
+            ocultar = false
+        }
+        }
+
+        btn.addEventListener('click', render)
+        render()
+    </script>
+</body>
+</html>

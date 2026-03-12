@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nombre  <input type="text" id="nombre"><br>
+    Edad    <input type="text" id="edad"><br>
+    <input type="button" value="Comprobar" id="btnCheck">
+    <p id="resultado"></p>
+    <script>
+        // 1 DATOS
+
+        // 2 Capturar elementos
+        const nombre = document.querySelector('#nombre')
+        const edad = document.querySelector('#edad')
+        const btnCheck = document.querySelector('#btnCheck')
+        const display = document.querySelector('#resultado')
+
+        // 3 Render
+        function render(flag, nb)
+        {
+            if (flag)
+                display.textContent = `${nb} es mayor de edad`
+            else
+                display.textContent = `${nb} es menor de edad`
+            
+        }
+
+        // 4 Logica
+        function validate()
+        {
+            // Capturar Texto
+            let txtnb = nombre.value
+            let txtEdad = edad.value
+
+            // Validar
+            if (txtnb.length === 0)
+            {
+                alert("Falta el nombre")
+                return
+            }
+            if (Number(txtEdad) === null || Number(txtEdad) < 0)
+            {
+                alert("Edad no valida")
+                return
+            }
+
+            if (numedad < 18)
+                render(false, txtnb)
+            else
+                render(true)
+        }
+
+        // 5 Listeners + render inicial
+        btnCheck.addEventListener('click', validate)
+
+
+    </script>
+</body>
+</html>

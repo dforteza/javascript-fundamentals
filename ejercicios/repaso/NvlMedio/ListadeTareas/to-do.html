@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="to-do.js" defer></script>
+</head>
+<body>
+    <!--
+    Requisitos
+
+    - El campo de texto no puede estar vacío ni tener menos de 3 caracteres (alert con el error)
+    - Al pulsar "Añadir", crear un objeto { id, texto, completada } y añadirlo al array tareas
+    - Mostrar cada tarea como <li> con un botón "✓" para marcarla y un botón "✗" para eliminarla
+    - Las tareas completadas deben aparecer con text-decoration: line-through (añade/quita una clase CSS)
+    - Mostrar en un <span> el contador: "X tareas pendientes"
+    - Usar Array.filter() al eliminar y Array.find() o índice al cambiar estado
+    -->
+    <input type="text" id="tarea" placeholder="Nueva tarea...">
+    <button id="btnAdd">Añadir</button>
+    <span id="contador"></span>
+    <ul id="lista"></ul>
+</body>
+</html>

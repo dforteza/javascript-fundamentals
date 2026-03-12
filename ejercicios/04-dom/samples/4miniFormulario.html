@@ -36,13 +36,15 @@
         const mailVal = mail.value
 
         // Validar nombre (entre 5 y 40 caracteres)
-        if (nombreVal.length < 5 || nombreVal.length > 40) {
+        if (nombreVal.length < 5 || nombreVal.length > 40) 
+        {
             alert("El nombre debe tener entre 5 y 40 caracteres")
             return
         }
 
         // Validar email (contiene @ y .)
-        if (!mailVal.includes("@") || !mailVal.includes(".")) {
+        if (!mailVal.includes("@") || !mailVal.includes(".")) 
+        {
             alert("El email debe contener @ y .")
             return
         }
