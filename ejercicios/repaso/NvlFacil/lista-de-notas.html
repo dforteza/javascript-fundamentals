@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="alumno" placeholder="Nombre del alumno">
+    <input type="number" id="nota" placeholder="Nota (0-10)">
+    <input type="button" value="Añadir" id="btnAdd">
+    <ul id="lista"></ul>
+    <p id="media"></p>
+    <script defer>
+        // 1- DATOS
+        let alumnos = []
+
+        // 2- CAMPOS
+        const nombre = document.querySelector('#alumno')
+        const nota = document.querySelector('#nota')
+        const btn = document.querySelector('#btnAdd')
+        const lista = document.querySelector('#lista')
+        const avg = document.querySelector('#media')
+
+        // 3- RENDER
+        function render()
+        {
+            lista.innerHTML = ""
+            for (let alumno of alumnos)
+            {
+                let li = document.createElement('li')
+                li.textContent = `${alumno.nombre} - ${alumno.nota}`
+                lista.append(li)   
+            }
+            avg.textContent = mostrarMedia()
+        }
+
+        // 4- LOGICA
+        function addAlumno()
+        {
+            const txtNombre = nombre.value.trim()
+            const txtNota = nota.value
+
+            if (txtNombre.length === 0)
+            {
+                alert("Nombre vacio")
+                return
+            }
+            if (isNaN(Number(txtNota)) || !(Number(txtNota) > 0 && Number(txtNota) < 10))
+            {
+                alert("Nota incorrecta")
+                return
+            }
+            let obj = {nombre : txtNombre, nota : txtNota}
+            alumnos.push(obj)
+            nombre.value = ""
+            nota.value = ""
+            render()
+        }
+
+        function mostrarMedia()
+        {
+            let suma = 0
+            let cont = 0
+            alumnos.forEach((alumno) =>{
+
+                suma += Number(alumno.nota)
+                cont += 1
+            })
+
+            return (`Media registrada: ${suma/cont}`)
+
+        }
+
+        // 5- LISTENERS
+        btn.addEventListener('click', addAlumno)
+    </script>
+</body>
+</html>
