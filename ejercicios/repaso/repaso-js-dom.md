@@ -1,5 +1,4 @@
-# Repaso JS + DOM — Estructura para el examen
-
+# Repaso JS + DOM - Notas de mis ejercicios
 ## Estructura base de cualquier ejercicio
 
 ```js
@@ -40,7 +39,7 @@ render() // render inicial si hace falta
 
 ---
 
-## Reglas
+## Notas Personales
 
 **1 — Los datos viven en variables JS, nunca en el DOM**
 ```js
@@ -100,7 +99,7 @@ if (!/^\d{9}$/.test(telefono))   // regex: exactamente 9 dígitos
 
 ## Errores más comunes en examen
 
-| ❌ Error | ✅ Correcto |
+|  Error |  Correcto |
 |---|---|
 | `'clik'` | `'click'` |
 | `'Hola ${x}'` comillas normales | `` `Hola ${x}` `` backticks |
@@ -124,7 +123,7 @@ if (!/^\d{9}$/.test(telefono))   // regex: exactamente 9 dígitos
 
 ---
 
-## Snippets de situaciones frecuentes
+## Fragmentos de situaciones frecuentes
 
 **Añadir a lista**
 ```js
